@@ -2,6 +2,8 @@ const http = require("http");
 const express = require("express");
 const socketio = require("socket.io");
 const cors = require("cors");
+const helmet = require("helmet");
+require("dotenv").config();
 
 const { addUser, removeUser, getUser, getUsersInRoom } = require("./users");
 
@@ -11,6 +13,8 @@ const app = express();
 const server = http.createServer(app);
 const io = socketio(server);
 
+app.use(helmet());
+app.use(express.json());
 app.use(cors());
 app.use(router);
 
