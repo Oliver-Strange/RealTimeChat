@@ -2,7 +2,7 @@ import React from "react";
 
 const Input = ({ setMessage, sendMessage, message }) => (
   <form className="form">
-    <input
+    <textarea
       className="input"
       type="text"
       placeholder="Type a message..."
