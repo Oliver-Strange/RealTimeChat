@@ -15,7 +15,8 @@ const Chat = ({ location }) => {
   const [users, setUsers] = useState("");
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState([]);
-  const ENDPOINT = "localhost:5000";
+
+  const ENDPOINT = "localhost:8080";
 
   useEffect(() => {
     const { name, room } = queryString.parse(location.search);
@@ -60,7 +61,10 @@ const Chat = ({ location }) => {
     <div className="outerContainer">
       <div className="container">
         <InfoBar room={room} />
-        <Messages messages={messages} name={name} />
+        <div className="messagesContainer">
+          <Messages messages={messages} name={name} />
+        </div>
+
         <Input message={message} setMessage={setMessage} sendMessage={sendMessage} />
       </div>
       <TextContainer users={users} />
