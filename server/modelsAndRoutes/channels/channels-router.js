@@ -20,6 +20,16 @@ router.get("/:id", restricted, checkRole("User"), (req, res) => {
     .catch(error => res.send(error.message));
 });
 
+router.post("/", restricted, checkRole("User"), (req, res) => {
+  Channels.addChannel(req.body)
+    .then(channel => {
+      res.status(201).json(channel);
+    })
+    .catch(error => {
+      res.status(500).json({ message: "server error adding channel" }, error.message);
+    });
+});
+
 router.put("/:id", restricted, checkRole("User"), async (req, res) => {
   try {
     const updatedChannel = await Channels.updateChannel(req.params.id, req.body);

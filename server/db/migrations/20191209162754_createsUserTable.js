@@ -3,11 +3,11 @@ exports.up = function(knex, Promise) {
     tbl.increments();
 
     tbl
-      .string("username", 16)
+      .string("username", 12)
       .notNullable()
       .unique();
 
-    tbl.string("password").notNullable();
+    tbl.string("password", 16).notNullable();
 
     tbl.timestamps(true, true);
   });
