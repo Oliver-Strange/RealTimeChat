@@ -1,3 +1,5 @@
+require();
+
 const { addUser, removeUser, getUser, getUsersInRoom } = require("./socketUsers");
 
 exports = module.exports = function(io) {
