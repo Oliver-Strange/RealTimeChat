@@ -2,14 +2,14 @@ const router = require("express").Router();
 const bcrypt = require("bcryptjs");
 
 const tokenService = require("./tokenService");
-const Users = require();
+const Users = require("../modelsAndRoutes/users/users-model.js");
 
 router.post("/register", (req, res) => {
   let user = req.body;
   const hash = bcrypt.hashSync(user.password, 10);
   user.password = hash;
 
-  Users.add(user)
+  Users.addUser(user)
     .then(saved => {
       res.status(201).json(saved);
     })
