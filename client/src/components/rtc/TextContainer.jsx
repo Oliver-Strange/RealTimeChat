@@ -1,6 +1,6 @@
 import React from "react";
 
-import onlineIcon from "../img/onlineIcon.png";
+import onlineIcon from "../../img/onlineIcon.png";
 
 const TextContainer = ({ users }) => (
   <div className="textContainer">
