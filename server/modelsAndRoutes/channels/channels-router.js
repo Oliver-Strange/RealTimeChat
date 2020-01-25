@@ -4,7 +4,7 @@ const Channels = require("./channels-model");
 const restricted = require("../../auth/restrictedMiddleware");
 const checkRole = require("../../auth/CheckRoleMiddleware");
 
-router.get("/", restricted, checkRole("User"), (req, res) => {
+router.get("/", restricted, (req, res) => {
   Channels.getAllChannels()
     .then(channels => {
       res.json(channels);
@@ -12,7 +12,7 @@ router.get("/", restricted, checkRole("User"), (req, res) => {
     .catch(error => res.send(error.message));
 });
 
-router.get("/:id", restricted, checkRole("User"), (req, res) => {
+router.get("/:id", restricted, (req, res) => {
   Channels.getChannelByID(req.params.id)
     .then(channel => {
       res.json(channel);
@@ -20,7 +20,7 @@ router.get("/:id", restricted, checkRole("User"), (req, res) => {
     .catch(error => res.send(error.message));
 });
 
-router.post("/", restricted, checkRole("User"), (req, res) => {
+router.post("/", restricted, (req, res) => {
   Channels.addChannel(req.body)
     .then(channel => {
       res.status(201).json(channel);
@@ -30,7 +30,7 @@ router.post("/", restricted, checkRole("User"), (req, res) => {
     });
 });
 
-router.put("/:id", restricted, checkRole("User"), async (req, res) => {
+router.put("/:id", restricted, async (req, res) => {
   try {
     const updatedChannel = await Channels.updateChannel(req.params.id, req.body);
     if (updatedChannel) {
@@ -43,7 +43,7 @@ router.put("/:id", restricted, checkRole("User"), async (req, res) => {
   }
 });
 
-router.delete("/:id", restricted, checkRole("User"), (req, res) => {
+router.delete("/:id", restricted, (req, res) => {
   Channels.removeChannel(req.params.id)
     .then(count => {
       if (count > 0) {

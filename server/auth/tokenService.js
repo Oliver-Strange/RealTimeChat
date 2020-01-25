@@ -9,8 +9,7 @@ module.exports = {
 function generateToken(user) {
   const payload = {
     subject: user.id,
-    username: user.username,
-    roles: ["User"]
+    username: user.username
   };
 
   const options = {

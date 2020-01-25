@@ -1,5 +1,5 @@
 import React from "react";
-import onlineIcon from "../img/onlineIcon.png";
+import onlineIcon from "../../img/onlineIcon.png";
 
 import { Link } from "react-router-dom";
 

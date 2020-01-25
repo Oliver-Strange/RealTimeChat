@@ -24,7 +24,9 @@ function addChannel(channel) {
     .then(ids => {
       const [id] = ids;
 
-      return db("channels").where({ id }).first;
+      return db("channels")
+        .where({ id })
+        .first();
     });
 }
 

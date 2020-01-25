@@ -8,19 +8,26 @@ NodeJS, Express, Kenx, Socketio, SQLite3, Nodemon
     "password" : "string" max 16 char
 
     Encryption is used to store and verify the password via JWT
-    Returns 201 with username, encrypted password, and user id OR 500 with error
+    Returns 201 with username, encrypted password, user id, created and updated at OR 500 with error
+
+    {
+        "id": 2,
+        "username": "test2",
+        "password": "$2a$10$i5P/a.lgqQ9FWoy7YO.J4exk2jmbm0B8myKGasVlynaB8j0byiGbG",
+        "created_at": "2019-12-10 21:46:48",
+        "updated_at": "2019-12-10 21:46:48"
+    }
 
 ## Login - api/auth/login
 
     "username" : "string",
     "password" : "string"
 
-    If the username and encrypted password is correct a status 200 and a JWT, message, the user's roles will be returned
+    If the username and encrypted password is correct a status 200, JWT, and message will be returned
 
     {
         "message" : `Welcome ${username}, have a token!`,
-        token,
-        "roles" : token.roles
+        token
     }
 
     JWT must be sent from client for access to restricted routes
